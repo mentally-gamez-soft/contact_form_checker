@@ -35,6 +35,7 @@ jobs:
         pip-compile requirements.in
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        echo `pwd`
         chmod 777 display.sh
         ./display.sh
     - name: Lint with flake8
