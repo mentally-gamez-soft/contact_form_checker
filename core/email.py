@@ -28,7 +28,3 @@ class Email():
     
     def has_body(self) -> bool:
         return bool(self.body)
-    
-email = Email(from_recipient='unknOwn_user@JUNGL.fr', subject='test_email', body='This is a test message.')
-
-print(email.is_valid_email())
