@@ -22,8 +22,14 @@ class Email():
             result['info'] = str(e)
         
         return result
+    
+    def get_body(self) -> str:
+        return self.body
 
-    def has_subject(self):
+    def get_subject(self) -> str:
+        return self.subject
+
+    def has_subject(self) -> bool:
         return bool(self.subject)
     
     def has_body(self) -> bool:
