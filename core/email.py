@@ -25,9 +25,15 @@ class Email():
     
     def get_body(self) -> str:
         return self.body
+    
+    def has_valid_body_length(self) -> str:
+        return len(self.body) >= 30
 
     def get_subject(self) -> str:
         return self.subject
+    
+    def has_valid_subject_length(self) -> str:
+        return len(self.body) >= 15
 
     def has_subject(self) -> bool:
         return bool(self.subject)

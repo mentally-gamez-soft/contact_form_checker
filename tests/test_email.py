@@ -18,7 +18,7 @@ class TestEmail(unittest.TestCase):
         self.assertTrue(self.email.has_body(), 'The body of the email is not filled in!')
 
     def test_email_body_length(self):
-        self.assertTrue(len(self.email.get_body()) >= 30)
+        self.assertTrue(self.email.has_valid_body_length())
 
     def test_email_title_length(self):
-        self.assertTrue(len(self.email.get_subject()) >= 15)
+        self.assertTrue(self.email.has_valid_subject_length())
