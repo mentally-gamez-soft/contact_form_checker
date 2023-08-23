@@ -20,8 +20,8 @@ jobs:
     runs-on: ${{matrix.os}}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
-        version: ['3.11', '3.10']
+        os: [ubuntu-latest] # [ubuntu-latest, windows-latest]
+        version: ['3.11', '3.10', '3.9']
 
     steps:
     - uses: actions/checkout@v3
@@ -30,7 +30,7 @@ jobs:
         DOCKER_USER: ${{secrets.DOCKER_USERNAME}}
         DOCKER_PASS: ${{secrets.DOCKER_PASSWORD}}
       run: |
-        docker login -u $DOCKER_USER -p $DOCKER_PASS --password-stdin
+        docker login -u $DOCKER_USER -p $DOCKER_PASS
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
       with:
@@ -42,9 +42,8 @@ jobs:
         pip install pip-tools
         pip-compile requirements.in
         pip install flake8 pytest
-        pip install -r requirements.txt
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-        # if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
